@@ -1,0 +1,155 @@
+=== Dokumentace Vector
+ 
+
+== Zdroje:
+
+image:Src_vektor/Source.jpg[width=50%]
+
+Obrázek 1 Fotografie Ford Mustang (na adrese „https://www.ford.cz/osobni-vozy/novy-mustang/galerie“ )
+
+Pracovní metody:
+Pro transformaci mého bitmapového obrázku jsem využil pouze 2 ze 3 použitelných metod. První metodou bylo vytváření cest kolem jednotlivých části auta pomocí Bézierových křivek, které jsem využíval na velké většině tohoto projektu. Druhou, méně použitou metodou bylo Tvorba objektů jako obdélníky či kružnice. Tuto metodu jsem používal pouze pro kola. Poslední metodou je automatická vektorizace, která by v mém případě nebyla užitečná, protože tím že pozadí a auto mají podobné barvy, automatická vektorizace nedokázala vůbec rozeznat hrany na části auta.
+
+Pracovní postup:
+Prvním krokem, který jsem udělal bylo vytvoření obrysu celého auto bez kol. K tomu jsem využil již zmíněných Bézierových křivek tak, že jsem udělal velice nepřesný obrys, posunul jednotlivé uzly na správné pozice tak, že se obrys auta (které jsem měl jako nejnižší vrstvu pro porovnání) prolínal a konečně jsem měnil křivky, aby seděli také. Tuto metodu jsem používat u většiny objektů, tak pokud bude použita, tak ji nebudu stále zmiňovat. Obrys auta jsem zde pro lepší viditelnost vybarvil barevným přechodem tak, že jsem na levé straně obrazovky vybral barevný přechod, otevřel jsem si okno pro úpravu barev ( CTRL + SHIFT + F )  a upravil jsem výplně, respektive barvy tahů ( postupně se budou barvy karoserie dost měnit podle toho, která se aktuálně hodila nejvíce ).
+
+image:Src_vektor/Obrys.jpg[width=50%]
+
+Obrázek 2 Obrys karoserie
+
+Na to jsem navázal vytvářením obrysů viditelně rozeznatelných částí jako jsou skla, dveře, kola či světla stejným způsobem. První z těchto objektů, které jsem vytvářel, byla okna. Nejprve jsem je vytvořil stejným postupem jako obrys a poté jsem je spojil pomocí klikl Cesta -> Sjednocení. Navíc jsem ještě potřebovat vyříznou tato okna z naší již vytvořené karosérie. Proto jsem si je duplikoval ( CTRL + D ), vybral jeden z těchto párů oken a karoserii a udělal z nich rozdíl pomocí Cesta -> Rozdíl. Když jsem měl takto 2 různé objekty, dal jsem si je pro jednoduchost do různých vrstev tak, že jsem si otevřel panel vrstev (Ctrl + Shift + L). Vytvořil 2 vrstvy ( karoserie, okno ) a po kliknutí pravého tlačítka na jednotlivé objekty jsem vybral „přesunout do vrstvy“ a přesunul je do korespondující vrstvy. Znovu jsem kvůli viditelnost změnil barvy objektů i jejich obrysů.
+
+image:Src_vektor/Obrys_glass.jpg[width=50%]
+
+Obrázek 3 Karoserie se skly
+
+Další krok bylo vytvoření levého zrcátka. Znovu po vytvoření jsem pouze změnil barvy a přidal ho do nové vrstvy.
+
+image:Src_vektor/Obrys_zrcatko.jpg[width=50%]
+
+Obrázek 4 Karoserie se zrcátkem
+
+V dalších pár krocích jsem vytvářel zadní sklo a vnitřek kabiny, aby nevypadal pouze jako vyřízlý Znovu jsem tyto objekty rozdělil do vrstev podle toho v jakém pořadí měly být viděné kde nejbližší vrstvy byly nejvýše. To nastavím v okně vrstev tak, že vyberu vrstvu a pomocí šipek ( které jsem pod výběrem jednotlivých vrstev ) je přesouvám.
+
+image:Src_vektor/Karoserie_pozadi.jpg[width=50%]
+
+Obrázek 5 Zadní sklo
+
+image:Src_vektor/Karoserie_popředí.jpg[width=50%]
+
+Obrázek 6 Kabina
+
+ 
+Nyní jsem již měl hotový přibližný vzor kabiny, tak jsem se mohl vrhnout na větší detaily. První z těchto detailních objektů bylo přední světlo. U tohoto objektu jsem si konečně vyhrál. Jako obyčejně jsem začal s obrysem, avšak tentokrát jsem s ním neskončil. Nyní jsem vytvořil více částí, kdy jedna z nich byla žárovka světla. Zde jsem poprvé použil jinou techniku než obrys, neboť žárovka je oválná. Proto jsem vytvořil kruh, u kterého jsem upravoval velikost hran, otočení a skosení. Poté co jsem se dostal dostatečné blízko skutečnosti jsem klikl „Cesta -> objekt na cestu“. Tím se objekt převedl na Beriézové křivky, a já pouze mírně doupravil strany. Ostatní objekty jsem také vytvořil jako obrys a nakonec jsem přidal pouze úsečky takové, jaké byly na původním obrázku.
+
+image:Src_vektor/Karoserie_světlo.jpg[width=50%]
+
+Obrázek 7 Přední světlo
+
+
+Další krok bylo vytvoření kol. Než jsem však šel přímo na kola, potřeboval jsem ještě upravit karoserii, aby obsahovala nějaké pozadí pro kola. Prozatím jsem vytvořil pouze částečné tmavé pozadí. Na to jsem již navázal vytvářením kol. Základ je tvořen z 3 vrstev elips, každá reprezentující jinou část kola ( vnitřek kola, stranu pneumatik a vnějšek pneumatik ). Tyto elipsy byly také upraveny, aby byly co nejblíže originálu, převedeny na cestu do dokončeny. Další objekt byl disk kola. Tento objekt byl zatím asi nejsložitější, proto jsem ho vytvořil pomocí kružnice, kde jsem měnil poměr paprsku tak, aby byl nejblíže k tomu, co jsem chtěl. Bohužel ať jsem se snažil jak jsem se snažil, tak jsem se nedostal ke správnému výsledku. Proto jsem nebližší výsledek převedl na cestu a šel na to ručně. Po chvíli přetahování a vytváření nových uzlů jsem dospěl k dostatečně věrohodnému řešení. Nakonec jsem ještě do tohoto disku udělal 5 kruhových děl symbolizující šrouby a přesunul jsem ho na kolo. Za disk jsem ještě přidal bílý kruh, aby byly viděl šrouby. To jsem udělal tak, že jsem bílý kruh dal na správné místo a pomocí tlačítka „Posune výběr o úroveň níže“ na horní liště. Pro lepší 3d dojem jsem ještě zduplikoval disk, posunul ho do strany a přidal tmaví barvu a také udělal vnitřní stranu pneumatiky. Zadní kolo jsem udělal stejným způsobem, pouze disk jsem zkopíroval. Obě kola jsem poté přidal zase do jedné vrsty.
+
+ 
+image:Src_vektor/Kola.jpg[width=50%]
+
+
+Obrázek 8 Karoserie s koly
+
+
+Od kol jsem pokračoval k předku auta. K těmto krokům není moct co říci, znovu jsem je tvořil jeden po jednom, postupně jsem je dával k sobě. Občas, pokud měli 2 objekty stejnou hranu, jsem druhý z těchto objektů vytvořil tak, že jsem udělal obrys, poté jsem ho spojit s duplikovaným prvním objektem a rozpojoval/připojoval jsem jednotlivé uzly, aby ta společná hrana byla úplně stejná. Spojování a rozpojování se děla pomocí tlačítek v horní části obrazovky. Všechny toto změny společně s předním světlem jsem vkládal do vrstvy „předek“, kterou jsem nakonec spojil s vrstvou „karoserie“ a „zrcátko“ pro úplnost. Poté jsem dokončil s obrysy karoserie obrysem dveří.
+
+image:Src_vektor/Předek_karoserie.jpg[width=50%]
+
+Obrázek 9 Předek_karoserie_1
+
+image:Src_vektor/Předek_karoserie_2.jpg[width=50%]
+
+Obrázek 10 Předek_karoserie_2
+
+image:Src_vektor/Předek_karoserie_3.jpg[width=50%]
+
+Obrázek 11 Předek_karoserie_3
+
+image:Src_vektor/Předek_karoserie_4.jpg[width=50%]
+
+Obrázek 12 Předek_karoserie_4
+
+image:Src_vektor/Dveře_karoserie.jpg[width=50%]
+
+Obrázek 13 Obrys_dveří
+
+ 
+
+Nyní, když jsem měl již pěkně vytvořenou karoserii, mohl jsem začít se složitou částí tohoto projektu – Rozebírání auta. První krok bylo odebrání dveří a přenesení do jiné vrstvy. Nebylo to naštěstí tak složité, jak jsem myslel ( alespoň to rozdělení ). Nejprve jsem zduplikoval všechny objekty, které alespoň z části patří ke dveřím a přesunuj jsem je do nové vrstvy. Prostě jsem si vybral obrys z dveří, který jsem měl již předtím, protáhl ho i kolem okna a ořezával jsem jednotlivé části karoserie tak, aby nepřesahovaly do části dveří. Poté jsem udělal to samé pro části dveří, které přesahovaly. Samozřejmě se mi tam teď vytvořila díra, avšak tu jsem kvůli složitosti vyplňoval až později.
+
+image:Src_vektor/Auto_dveře_with.jpg[width=50%]
+
+Obrázek 14 Auto s dveřma
+
+image:Src_vektor/Auto_dveře_without.jpg[width=50%]
+
+Obrázek 15 Auto bez dveří
+
+ 
+
+V dalším rychlém kroce jsem pouze doplnil nějaké drobnosti na karoserii, které jsem předtím minul jako kapotu, zadní odrazku nebo text „5D“.
+
+image:Src_vektor/Karoserie_update.jpg[width=50%]
+
+Obrázek 16 Vylepření karoserie
+
+ 
+
+Pokračoval jsem ve vytváření částí, které zvenku nejsou vidět a to u kol. Vlastně jsem sundal kola a vytvořil násadu pro ně. Po chvíli hledání na internetu jsem zjistil, jak to má vypadat, tak jsem se pustil do díla. Jako u pneumatik jsem to vytvářel elipsami, které jsem vrstvil na sebe a také posouval pro 3D efekt. Na tento základ kola jsem ještě přidal brzdové destičky a jejich kryty, které celou tuto část opravdu spojily dohromady. Jelikož jsem potřeboval vrstvu, která je za součástí karoserie, avšak stále za koly, musel jsem vytvořit novou vrstvu pojmenovanou „karoserie pozadí“.
+
+image:Src_vektor/Auto_bez_kol.jpg[width=50%]
+
+Obrázek 17 Auto bez kol
+
+ 
+
+Nyní jsem se již mohl vrátit ke kabině. Předem varuji, že kabina se v průběhu měnila opravdu hodně, takže na každém obrázku nebudou pouze přibývat objekty, ale budou se hodně měnit také. První krok na této cestě byl například velice mizerný, ale nějak jsem začít musel. Co jsem tedy udělal bylo, že jsem skryl vrstvu dveří a začal tvořit prázdný vnitřek kabiny.
+
+image:Src_vektor/Auto_kabina_1.jpg[width=50%]
+
+Obrázek 18 Kabina
+
+
+Potom, co jsem netušil jak pořádně na to, jsem strávil hodinu na vytváření karoserie při které jsem úplně zapomněl ukládat, takže nemám mezivýsledky, ale věřte mi, ony by ani za to nestály. Jak z následujícího obrázku je vidět, vytvořil jsem pár objektů. Zaprvé jsem vylepšil vnitřek dveří. Poté jsem vytvořil sedačku, kterou jsou následně dlouze upravoval, aby více méně seděla do interiéru. To mi zabralo mnohem víc času, než bych si chtěl připustil, avšak pro dlouhém boji tam jak tak seděla. K tomu jsem přidal přepážku mezi sedačkami ( na které by normálně byla ruční páka, avšak tu jsem nevytvářel, neboť by nebyla vidět). Za ní jsem zduplikoval první sedačku a upravil ji tak, aby tak také nějak seděla. V tomto kroku jsem karoserii zakončil vytvořením přední desky a volantu.
+
+image:Src_vektor/Auto_kabina_2.jpg[width=50%]
+
+Obrázek 19 Karoserie
+
+ 
+
+Poslední sundatelnout vět, kterou jsem chtěl odebrat byla kapota. Jelikož však by vytváření motoru a všech věcí uvnitř bylo opravdu náročné, rozhodl jsem se pod kapotu nic nedávat. Udělal jsem pouze prázdný vnitřek s viditelnou částí pro zadní kolo.
+
+image:Src_vektor/Auto_bez_kapoty.jpg[width=50%]
+
+Obrázek 20 auto bez kapoty
+
+ 
+
+K tomu jsem ještě upravil interiér a karoserii do výsledného tvaru, se kterým jsem již spokojený.
+
+image:Src_vektor/Interier_final.jpg[width=50%]
+
+Obrázek 21 Konečný interior
+
+Poté jsem byl již hotový, avšak jedna věc mi chyběla. Přece jenom zkusit něco automatickou vektorizací. Jak již jsem říkal, většina věcí na autě nebyla možná takto zvektorizovat, tak jsem si vybral něco, co jsem věděl, že půjde dobře. To něco bylo logo mustang. Doteď jsem používat opravdu jednoduše udělané, neboť jsem úplně na automatickou vektorizaci zapomněl. Proto jsem si našel hezký obrázek loga, vložil ho do inkscape a klikl „cesta->vektorizovat bitmapu, Jelikož obrázek byl dostatečné kvality, nemusel jsem nic měnit a pouze jsem vše odsouhlasil. Tím mi vzniklo opravdu hezké logo.
+
+image:Src_vektor/Nove_logo.jpg[width=50%]
+
+Obrázek 22 Nové logo mustang
+
+Po dlouhých 10 hodinách ( možná i více kvůli mé nepřesnosti měřit čas ) mám výsledek, na který můžu být pyšný. Jediná věc, která nevypadá tak, jak bych si představoval je interiér, avšak udělal jsem to tak, jak bylo v mých možnostech. Zde již pouze finální výsledky.
+
+
+image:Src_vektor/Final.jpg[width=50%]
+
+Obrázek 23 Finální obrázek
+
+image:Src_vektor/Final_zordeleny.jpg[width=50%]
+
+Obrázek 24 Finální obrázek rozdělen na části
